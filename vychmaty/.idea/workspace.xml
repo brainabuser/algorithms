@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="vychmaty" targetName="vychmaty" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b4525314-2a6a-4f91-95e2-7040d23f8c56" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FavoritesManager">
+    <favorites_list name="vychmaty" />
+  </component>
+  <component name="ProjectId" id="1R0hk7VdjZAer06N6Cq5G963Sfq" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CLionsProjects\vychmaty" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="vychmaty" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="vychmaty" TARGET_NAME="vychmaty" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="vychmaty" RUN_TARGET_NAME="vychmaty">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b4525314-2a6a-4f91-95e2-7040d23f8c56" name="Default Changelist" comment="" />
+      <created>1568810060754</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568810060754</updated>
+      <workItem from="1568810063183" duration="3988000" />
+      <workItem from="1568890721995" duration="304000" />
+      <workItem from="1569357854204" duration="4814000" />
+      <workItem from="1570019658682" duration="1784000" />
+      <workItem from="1571176488204" duration="23194000" />
+      <workItem from="1571265960410" duration="2008000" />
+      <workItem from="1571354957039" duration="64000" />
+      <workItem from="1571767395604" duration="3617000" />
+      <workItem from="1571820204062" duration="5253000" />
+      <workItem from="1571934544338" duration="67000" />
+      <workItem from="1572219318592" duration="1912000" />
+      <workItem from="1572438891728" duration="2077000" />
+      <workItem from="1572458390037" duration="137000" />
+      <workItem from="1572955753086" duration="1829000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

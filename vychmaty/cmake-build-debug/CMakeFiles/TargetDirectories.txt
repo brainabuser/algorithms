@@ -1,0 +1,3 @@
+D:/CLionsProjects/vychmaty/cmake-build-debug/CMakeFiles/vychmaty.dir
+D:/CLionsProjects/vychmaty/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/CLionsProjects/vychmaty/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,3 @@
+D:/CLionsProjects/c_contest/cmake-build-release/CMakeFiles/_ontest.dir
+D:/CLionsProjects/c_contest/cmake-build-release/CMakeFiles/edit_cache.dir
+D:/CLionsProjects/c_contest/cmake-build-release/CMakeFiles/rebuild_cache.dir

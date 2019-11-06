@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/CLionsProjects/kek/main.cpp
+iostream
+-
+map
+-
+conio.h
+D:/CLionsProjects/kek/conio.h
+

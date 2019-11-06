@@ -1,0 +1,3 @@
+D:/CLionsProjects/Release/CMakeFiles/untitled1.dir
+D:/CLionsProjects/Release/CMakeFiles/edit_cache.dir
+D:/CLionsProjects/Release/CMakeFiles/rebuild_cache.dir

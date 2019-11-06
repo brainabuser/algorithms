@@ -1,0 +1,3 @@
+D:/CLionsProjects/sem2/cmake-build-debug/CMakeFiles/seminar2.dir
+D:/CLionsProjects/sem2/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/CLionsProjects/sem2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

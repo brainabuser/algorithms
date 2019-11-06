@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="diht_contest" targetName="diht_contest" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="822b8d37-880e-4fb3-bd8b-2d88ae3ec7b3" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="1SD2tgSpj7Tuf3UkP7vwzXs7xTh" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Vychmanty_task_1" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CLionsProjects\diht_contest" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="diht_contest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="diht_contest" TARGET_NAME="diht_contest" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="diht_contest" RUN_TARGET_NAME="diht_contest">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="822b8d37-880e-4fb3-bd8b-2d88ae3ec7b3" name="Default Changelist" comment="" />
+      <created>1571084061817</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571084061817</updated>
+      <workItem from="1571084063669" duration="7890000" />
+      <workItem from="1571257167683" duration="31338000" />
+      <workItem from="1571412080301" duration="19395000" />
+      <workItem from="1571575225768" duration="8372000" />
+      <workItem from="1571675850351" duration="616000" />
+      <workItem from="1571753832985" duration="20851000" />
+      <workItem from="1571934612842" duration="57333000" />
+      <workItem from="1572106911524" duration="48865000" />
+      <workItem from="1572307350466" duration="15240000" />
+      <workItem from="1572438869105" duration="2000" />
+      <workItem from="1572475960680" duration="842000" />
+      <workItem from="1572519618537" duration="2032000" />
+      <workItem from="1572882644976" duration="170000" />
+      <workItem from="1572885021129" duration="191000" />
+      <workItem from="1572955718662" duration="37000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/E.cpp</url>
+          <line>4</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="array-&gt;*array" />
+        <watch expression="end" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
