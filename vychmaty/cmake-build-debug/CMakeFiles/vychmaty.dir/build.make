@@ -56,27 +56,27 @@ include CMakeFiles/vychmaty.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/vychmaty.dir/flags.make
 
-CMakeFiles/vychmaty.dir/vychmaty3.cpp.obj: CMakeFiles/vychmaty.dir/flags.make
-CMakeFiles/vychmaty.dir/vychmaty3.cpp.obj: ../vychmaty3.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CLionsProjects\vychmaty\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/vychmaty.dir/vychmaty3.cpp.obj"
-	D:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\vychmaty.dir\vychmaty3.cpp.obj -c D:\CLionsProjects\vychmaty\vychmaty3.cpp
+CMakeFiles/vychmaty.dir/test.cpp.obj: CMakeFiles/vychmaty.dir/flags.make
+CMakeFiles/vychmaty.dir/test.cpp.obj: ../test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CLionsProjects\vychmaty\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/vychmaty.dir/test.cpp.obj"
+	D:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\vychmaty.dir\test.cpp.obj -c D:\CLionsProjects\vychmaty\test.cpp
 
-CMakeFiles/vychmaty.dir/vychmaty3.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vychmaty.dir/vychmaty3.cpp.i"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\CLionsProjects\vychmaty\vychmaty3.cpp > CMakeFiles\vychmaty.dir\vychmaty3.cpp.i
+CMakeFiles/vychmaty.dir/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vychmaty.dir/test.cpp.i"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\CLionsProjects\vychmaty\test.cpp > CMakeFiles\vychmaty.dir\test.cpp.i
 
-CMakeFiles/vychmaty.dir/vychmaty3.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vychmaty.dir/vychmaty3.cpp.s"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\CLionsProjects\vychmaty\vychmaty3.cpp -o CMakeFiles\vychmaty.dir\vychmaty3.cpp.s
+CMakeFiles/vychmaty.dir/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vychmaty.dir/test.cpp.s"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\CLionsProjects\vychmaty\test.cpp -o CMakeFiles\vychmaty.dir\test.cpp.s
 
 # Object files for target vychmaty
 vychmaty_OBJECTS = \
-"CMakeFiles/vychmaty.dir/vychmaty3.cpp.obj"
+"CMakeFiles/vychmaty.dir/test.cpp.obj"
 
 # External object files for target vychmaty
 vychmaty_EXTERNAL_OBJECTS =
 
-vychmaty.exe: CMakeFiles/vychmaty.dir/vychmaty3.cpp.obj
+vychmaty.exe: CMakeFiles/vychmaty.dir/test.cpp.obj
 vychmaty.exe: CMakeFiles/vychmaty.dir/build.make
 vychmaty.exe: CMakeFiles/vychmaty.dir/linklibs.rsp
 vychmaty.exe: CMakeFiles/vychmaty.dir/objects1.rsp

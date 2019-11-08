@@ -6,9 +6,11 @@
 
 #IncludeRegexTransform: 
 
-D:/CLionsProjects/vychmaty/vychmaty3.cpp
+D:/CLionsProjects/vychmaty/test.cpp
 iostream
 -
 cmath
+-
+iomanip
 -
 

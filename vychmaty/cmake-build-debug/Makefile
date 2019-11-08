@@ -122,32 +122,32 @@ vychmaty/fast:
 	$(MAKE) -f CMakeFiles\vychmaty.dir\build.make CMakeFiles/vychmaty.dir/build
 .PHONY : vychmaty/fast
 
-vychmaty3.obj: vychmaty3.cpp.obj
+test.obj: test.cpp.obj
 
-.PHONY : vychmaty3.obj
+.PHONY : test.obj
 
 # target to build an object file
-vychmaty3.cpp.obj:
-	$(MAKE) -f CMakeFiles\vychmaty.dir\build.make CMakeFiles/vychmaty.dir/vychmaty3.cpp.obj
-.PHONY : vychmaty3.cpp.obj
+test.cpp.obj:
+	$(MAKE) -f CMakeFiles\vychmaty.dir\build.make CMakeFiles/vychmaty.dir/test.cpp.obj
+.PHONY : test.cpp.obj
 
-vychmaty3.i: vychmaty3.cpp.i
+test.i: test.cpp.i
 
-.PHONY : vychmaty3.i
+.PHONY : test.i
 
 # target to preprocess a source file
-vychmaty3.cpp.i:
-	$(MAKE) -f CMakeFiles\vychmaty.dir\build.make CMakeFiles/vychmaty.dir/vychmaty3.cpp.i
-.PHONY : vychmaty3.cpp.i
+test.cpp.i:
+	$(MAKE) -f CMakeFiles\vychmaty.dir\build.make CMakeFiles/vychmaty.dir/test.cpp.i
+.PHONY : test.cpp.i
 
-vychmaty3.s: vychmaty3.cpp.s
+test.s: test.cpp.s
 
-.PHONY : vychmaty3.s
+.PHONY : test.s
 
 # target to generate assembly for a file
-vychmaty3.cpp.s:
-	$(MAKE) -f CMakeFiles\vychmaty.dir\build.make CMakeFiles/vychmaty.dir/vychmaty3.cpp.s
-.PHONY : vychmaty3.cpp.s
+test.cpp.s:
+	$(MAKE) -f CMakeFiles\vychmaty.dir\build.make CMakeFiles/vychmaty.dir/test.cpp.s
+.PHONY : test.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... vychmaty
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... vychmaty3.obj
-	@echo ... vychmaty3.i
-	@echo ... vychmaty3.s
+	@echo ... test.obj
+	@echo ... test.i
+	@echo ... test.s
 .PHONY : help
 
 
