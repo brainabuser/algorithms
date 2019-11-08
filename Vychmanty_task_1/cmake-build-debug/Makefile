@@ -122,32 +122,32 @@ Vychmanty_task_1/fast:
 	$(MAKE) -f CMakeFiles\Vychmanty_task_1.dir\build.make CMakeFiles/Vychmanty_task_1.dir/build
 .PHONY : Vychmanty_task_1/fast
 
-12.8.obj: 12.8.cpp.obj
+T_2.obj: T_2.cpp.obj
 
-.PHONY : 12.8.obj
+.PHONY : T_2.obj
 
 # target to build an object file
-12.8.cpp.obj:
-	$(MAKE) -f CMakeFiles\Vychmanty_task_1.dir\build.make CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.obj
-.PHONY : 12.8.cpp.obj
+T_2.cpp.obj:
+	$(MAKE) -f CMakeFiles\Vychmanty_task_1.dir\build.make CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.obj
+.PHONY : T_2.cpp.obj
 
-12.8.i: 12.8.cpp.i
+T_2.i: T_2.cpp.i
 
-.PHONY : 12.8.i
+.PHONY : T_2.i
 
 # target to preprocess a source file
-12.8.cpp.i:
-	$(MAKE) -f CMakeFiles\Vychmanty_task_1.dir\build.make CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.i
-.PHONY : 12.8.cpp.i
+T_2.cpp.i:
+	$(MAKE) -f CMakeFiles\Vychmanty_task_1.dir\build.make CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.i
+.PHONY : T_2.cpp.i
 
-12.8.s: 12.8.cpp.s
+T_2.s: T_2.cpp.s
 
-.PHONY : 12.8.s
+.PHONY : T_2.s
 
 # target to generate assembly for a file
-12.8.cpp.s:
-	$(MAKE) -f CMakeFiles\Vychmanty_task_1.dir\build.make CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.s
-.PHONY : 12.8.cpp.s
+T_2.cpp.s:
+	$(MAKE) -f CMakeFiles\Vychmanty_task_1.dir\build.make CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.s
+.PHONY : T_2.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... Vychmanty_task_1
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... 12.8.obj
-	@echo ... 12.8.i
-	@echo ... 12.8.s
+	@echo ... T_2.obj
+	@echo ... T_2.i
+	@echo ... T_2.s
 .PHONY : help
 
 

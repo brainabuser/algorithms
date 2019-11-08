@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/CLionsProjects/Vychmanty_task_1/12.8.cpp">
+		<Unit filename="D:/CLionsProjects/Vychmanty_task_1/T_2.cpp">
 			<Option target="Vychmanty_task_1"/>
 		</Unit>
 		<Unit filename="D:/CLionsProjects/Vychmanty_task_1/CMakeLists.txt">

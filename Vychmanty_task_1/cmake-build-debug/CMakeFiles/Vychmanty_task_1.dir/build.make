@@ -56,27 +56,27 @@ include CMakeFiles/Vychmanty_task_1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Vychmanty_task_1.dir/flags.make
 
-CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.obj: CMakeFiles/Vychmanty_task_1.dir/flags.make
-CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.obj: ../12.8.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CLionsProjects\Vychmanty_task_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.obj"
-	D:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Vychmanty_task_1.dir\12.8.cpp.obj -c D:\CLionsProjects\Vychmanty_task_1\12.8.cpp
+CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.obj: CMakeFiles/Vychmanty_task_1.dir/flags.make
+CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.obj: ../T_2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\CLionsProjects\Vychmanty_task_1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.obj"
+	D:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Vychmanty_task_1.dir\T_2.cpp.obj -c D:\CLionsProjects\Vychmanty_task_1\T_2.cpp
 
-CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.i"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\CLionsProjects\Vychmanty_task_1\12.8.cpp > CMakeFiles\Vychmanty_task_1.dir\12.8.cpp.i
+CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.i"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\CLionsProjects\Vychmanty_task_1\T_2.cpp > CMakeFiles\Vychmanty_task_1.dir\T_2.cpp.i
 
-CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.s"
-	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\CLionsProjects\Vychmanty_task_1\12.8.cpp -o CMakeFiles\Vychmanty_task_1.dir\12.8.cpp.s
+CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.s"
+	D:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\CLionsProjects\Vychmanty_task_1\T_2.cpp -o CMakeFiles\Vychmanty_task_1.dir\T_2.cpp.s
 
 # Object files for target Vychmanty_task_1
 Vychmanty_task_1_OBJECTS = \
-"CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.obj"
+"CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.obj"
 
 # External object files for target Vychmanty_task_1
 Vychmanty_task_1_EXTERNAL_OBJECTS =
 
-Vychmanty_task_1.exe: CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.obj
+Vychmanty_task_1.exe: CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.obj
 Vychmanty_task_1.exe: CMakeFiles/Vychmanty_task_1.dir/build.make
 Vychmanty_task_1.exe: CMakeFiles/Vychmanty_task_1.dir/linklibs.rsp
 Vychmanty_task_1.exe: CMakeFiles/Vychmanty_task_1.dir/objects1.rsp

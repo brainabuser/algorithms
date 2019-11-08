@@ -13,10 +13,10 @@ int main() {
     long double y[10] = {92'228'496, 106'021'537, 123'202'624, 132'164'569, 151'325'798,
                          179'323'175, 203'211'926, 226'545'805, 248'709'873, 281'421'906};
     int size = 10;
-    cout << "Enter the size of both x and y arrays:" << endl;
-    cin >> size;
-    cout << "Enter " << size << " pairs of values of x and y:" << endl;
-    readArrays(x, y, size);
+//    cout << "Enter the size of both x and y arrays:" << endl;
+//    cin >> size;
+//    cout << "Enter " << size << " pairs of values of x and y:" << endl;
+//    readArrays(x, y, size);
     long double *coefficients = new long double[size];
     long double derivative = 0.0;
     for (int i = 0; i < size; ++i) {

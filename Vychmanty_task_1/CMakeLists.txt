@@ -3,4 +3,4 @@ project(Vychmanty_task_1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Vychmanty_task_1 12.8.cpp)
+add_executable(Vychmanty_task_1 T_2.cpp)

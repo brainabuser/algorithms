@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/CLionsProjects/Vychmanty_task_1/12.8.cpp" "D:/CLionsProjects/Vychmanty_task_1/cmake-build-debug/CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.obj"
+  "D:/CLionsProjects/Vychmanty_task_1/T_2.cpp" "D:/CLionsProjects/Vychmanty_task_1/cmake-build-debug/CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

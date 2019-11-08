@@ -1,4 +1,4 @@
-"D:\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=D:/MinGW/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" D:\CLionsProjects\Vychmanty_task_1
+"D:\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\CLionsProjects\Vychmanty_task_1
 -- Configuring done
 -- Generating done
 -- Build files have been written to: D:/CLionsProjects/Vychmanty_task_1/cmake-build-debug

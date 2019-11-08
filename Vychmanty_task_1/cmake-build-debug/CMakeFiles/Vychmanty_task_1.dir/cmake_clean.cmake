@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Vychmanty_task_1.dir/12.8.cpp.obj"
+  "CMakeFiles/Vychmanty_task_1.dir/T_2.cpp.obj"
   "Vychmanty_task_1.pdb"
   "Vychmanty_task_1.exe"
   "Vychmanty_task_1.exe.manifest"
