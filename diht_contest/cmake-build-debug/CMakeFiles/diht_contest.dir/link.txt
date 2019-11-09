@@ -1,3 +1,0 @@
-"D:\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\diht_contest.dir/objects.a
-D:\MinGW\bin\ar.exe cr CMakeFiles\diht_contest.dir/objects.a @CMakeFiles\diht_contest.dir\objects1.rsp
-D:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\diht_contest.dir/objects.a -Wl,--no-whole-archive  -o diht_contest.exe -Wl,--out-implib,libdiht_contest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\diht_contest.dir\linklibs.rsp

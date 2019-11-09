@@ -1,3 +1,0 @@
-D:/CLionsProjects/Vychmanty_task_1/cmake-build-debug/CMakeFiles/Vychmanty_task_1.dir
-D:/CLionsProjects/Vychmanty_task_1/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/CLionsProjects/Vychmanty_task_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

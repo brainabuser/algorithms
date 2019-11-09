@@ -1,4 +1,0 @@
-ToolSet: 5.2 (local)@D:\MinGW
-Options: 
-
-Options:-DCMAKE_CXX_COMPILER=D:/MinGW/bin/g++.exe

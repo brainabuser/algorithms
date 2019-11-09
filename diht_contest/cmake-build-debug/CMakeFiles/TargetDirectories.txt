@@ -1,3 +1,0 @@
-D:/CLionsProjects/diht_contest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-D:/CLionsProjects/diht_contest/cmake-build-debug/CMakeFiles/diht_contest.dir
-D:/CLionsProjects/diht_contest/cmake-build-debug/CMakeFiles/edit_cache.dir

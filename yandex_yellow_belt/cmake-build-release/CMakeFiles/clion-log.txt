@@ -1,4 +1,0 @@
-"D:\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=D:/MinGW/bin/g++.exe -G "CodeBlocks - MinGW Makefiles" D:\CLionsProjects\yandex_yellow_belt
--- Configuring done
--- Generating done
--- Build files have been written to: D:/CLionsProjects/yandex_yellow_belt/cmake-build-release

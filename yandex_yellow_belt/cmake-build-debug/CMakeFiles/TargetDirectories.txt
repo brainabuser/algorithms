@@ -1,3 +1,0 @@
-D:/CLionsProjects/yandex_yellow_belt/cmake-build-debug/CMakeFiles/yandex_yellow_belt.dir
-D:/CLionsProjects/yandex_yellow_belt/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/CLionsProjects/yandex_yellow_belt/cmake-build-debug/CMakeFiles/rebuild_cache.dir

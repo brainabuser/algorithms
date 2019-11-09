@@ -1,3 +1,0 @@
-D:/CLionsProjects/sem8/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/CLionsProjects/sem8/cmake-build-debug/CMakeFiles/sem8.dir
-D:/CLionsProjects/sem8/cmake-build-debug/CMakeFiles/rebuild_cache.dir

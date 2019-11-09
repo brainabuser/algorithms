@@ -1,3 +1,0 @@
-"D:\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\sem5.dir/objects.a
-D:\MinGW\bin\ar.exe cr CMakeFiles\sem5.dir/objects.a @CMakeFiles\sem5.dir\objects1.rsp
-D:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\sem5.dir/objects.a -Wl,--no-whole-archive  -o sem5.exe -Wl,--out-implib,libsem5.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\sem5.dir\linklibs.rsp
