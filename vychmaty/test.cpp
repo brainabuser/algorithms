@@ -47,6 +47,15 @@ int main() {
     for (int i = 0; i < size; ++i) {
         newton_coeffs[i] = t_matrix[i][i + 1];
     }
+    //Выводим треугольную матрицу
+    for (int i = 0; i < size; ++i) {
+        for (int j = 0; j < size + 2; ++j) {
+            cout << setw(10) << setprecision(3);
+            cout << t_matrix[i][j] << ' ';
+        }
+        cout << endl;
+    }
+    cout << endl;
     //Чистим память, выделенную под треугольную матрицу коэффициентов
     for (int i = 0; i < size; ++i) {
         delete[] t_matrix[i];
@@ -113,15 +122,6 @@ int main() {
     delete[] c_values;
     cout << "Value of maximal deviation on uniform grid from the value of the original function is " << p_max << endl;
     cout << "Value of maximal deviation on Chebyshev`s grid from the value of the original function is " << c_max << endl;
-    //    //Выводим треугольную матрицу
-//    for (int i = 0; i < size; ++i) {
-//        for (int j = 0; j < size + 2; ++j) {
-//            cout << setw(10) << setprecision(3);
-//            cout << t_matrix[i][j] << ' ';
-//        }
-//        cout << endl;
-//    }
-//    cout << endl;
     return 0;
 }
 

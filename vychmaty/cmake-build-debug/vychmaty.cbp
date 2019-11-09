@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/CLionsProjects/vychmaty/test.cpp">
+		<Unit filename="D:/CLionsProjects/vychmaty/vychmaty4.cpp">
 			<Option target="vychmaty"/>
 		</Unit>
 		<Unit filename="D:/CLionsProjects/vychmaty/CMakeLists.txt">

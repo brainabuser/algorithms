@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/vychmaty.dir/test.cpp.obj"
+  "CMakeFiles/vychmaty.dir/vychmaty4.cpp.obj"
   "vychmaty.pdb"
   "vychmaty.exe"
   "vychmaty.exe.manifest"

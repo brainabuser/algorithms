@@ -60,7 +60,7 @@ int main() {
     printArray(x, size, "Nodes at [-1, 1]:");
     delete[] x;
     printArray(newton_coeffs, size, "Coefficients of Newton`s interpolant:");
-    //Чистим память, выжеденную под массив коэффициентов
+    //Чистим память, выделенную под массив коэффициентов
     //
     printArray(f_x, size, "Values of function f(x) = sin(PI * (1 + x)) at nodes:");
     delete[] f_x;
@@ -94,7 +94,7 @@ int main() {
     delete[] x;
     delete[] c_x;
     delete[] newton_coeffs;
-    //Ищем модуль максимального отклонения значения интерполянта от значения функции на равномерной сетке
+    //Ищем модуль максимального отклонения значения интерполянта от значения функции на равномерной сетке и сетки Чебышева
     long double p_max = 0.0;
     long double c_max = 0.0;
     for (int i = 0; i < n_size; ++i) {

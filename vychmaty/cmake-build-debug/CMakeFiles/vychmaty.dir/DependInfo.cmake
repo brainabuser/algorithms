@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/CLionsProjects/vychmaty/test.cpp" "D:/CLionsProjects/vychmaty/cmake-build-debug/CMakeFiles/vychmaty.dir/test.cpp.obj"
+  "D:/CLionsProjects/vychmaty/vychmaty4.cpp" "D:/CLionsProjects/vychmaty/cmake-build-debug/CMakeFiles/vychmaty.dir/vychmaty4.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
