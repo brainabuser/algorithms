@@ -17,7 +17,7 @@ int main() {
 
 long double trapezoid(const int &fineness) {
     const int size = fineness;
-    long double step = 3.0 / fineness;
+    long double step = 3.0 / (fineness - 1);
     long double *x = new long double[size];
     x[0] = 0.0;
     long double *f_x = new long double[size];

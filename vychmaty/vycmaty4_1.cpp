@@ -63,7 +63,7 @@ int main() {
     }
     printArray(node_x, size, "Nodes at [-1, 1]:");
     printArray(newton_coeffs, size, "Coefficients of Newton`s interpolant:");
-    printArray(f_x, size, "Values of function f(x) = sin(PI * (1 + x)) at nodes:");
+    printArray(f_x, size, "Values of function f(x) = x^4 - 8x^3 + 8x^2 - x + 1 at nodes:");
     delete[] f_x;
     printArray(p_values, size, "Values of Newton`s interpolant at nodes:");
     delete[] p_values;
@@ -123,7 +123,7 @@ int main() {
 }
 
 long double computeFunctionValue(const long double &point) {
-    return sin(M_PI * (1.0 + point));
+    return pow(point, 4) - 8 * pow(point, 3) + 8 * pow(point, 2) - point + 1.0;
 }
 
 
