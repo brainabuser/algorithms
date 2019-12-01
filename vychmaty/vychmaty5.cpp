@@ -21,7 +21,7 @@ int main() {
 }
 
 long double computeFunction(const long double &point) {
-    return cos(10 * point) / (1.0 + pow(point, 3));
+    return cos(1000 * point) / (1.0 + pow(point, 3));
 }
 
 long double computeIntegral(const int &fineness) {
@@ -55,13 +55,13 @@ long double trapezoid() {
 }
 
 long double gaussianMember(const long double &left, const long double &right) {
-    long double x[3] = {-0.7745967, 0.0, 0.7745967};
-    long double c[3] = {0.5555556, 0.8888889, 0.5555556};
+    long double x[2] = {-0.7745967, 0.7745967};
+    long double c[2] = {1, 1};
     long double r_coeff = (right - left) / 2.0;
     long double s_coeff = (right + left) / 2.0;
     long double member = 0.0;
     long double actual_node;
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 2; ++i) {
         actual_node = s_coeff + r_coeff * x[i];
         member += c[i] * computeFunction(actual_node);
     }
