@@ -4,118 +4,174 @@
 
 using namespace std;
 
-#define max_request_size 6
+#define max_request_size 11
 
 struct Node {
     int value = -1;
     Node *next = nullptr;
+    Node *prev = nullptr;
 };
 
-struct Stack {
+struct Dequeue {
     int size = 0;
     Node *head = nullptr;
     Node *tail = nullptr;
 };
 
-void push(Stack *stack, int data);
+void push_front(Dequeue *dequeue, int data);
 
-int pop(Stack *stack);
+void push_back(Dequeue *dequeue, int data);
 
-void back(Stack *stack);
+int pop_front(Dequeue *dequeue);
 
-void min(Stack *stack);
+int pop_back(Dequeue *dequeue);
 
-void size(Stack *stack);
+void front(Dequeue *dequeue);
 
-void clear(Stack *stack);
+void back(Dequeue *dequeue);
 
-void printList(const Stack *stack);
+void size(Dequeue *dequeue);
+
+void clear(Dequeue *dequeue);
+
+void printList(const Dequeue *dequeue);
 
 int main() {
-    auto *stack = new Stack;
+    auto *dequeue = new Dequeue;
     int request_number;
     cin >> request_number;
     for (int i = 0; i < request_number; ++i) {
         char request[max_request_size];
         cin >> request;
-        if (!strcmp(request, "push")) {
+        if (!strcmp(request, "push_front")) {
             int value;
             cin >> value;
-            push(stack, value);
-        } else if (!strcmp(request, "pop")) {
-            int result = pop(stack);
-            if (result == -1) {
+            push_front(dequeue, value);
+        } else if (!strcmp(request, "push_back")) {
+            int value;
+            cin >> value;
+            push_back(dequeue, value);
+        } else if (!strcmp(request, "pop_front")) {
+            int value;
+            value = pop_front(dequeue);
+            if (value == -1) {
                 cout << "error" << endl;
             } else {
-                cout << result << endl;
+                cout << value << endl;
             }
+        } else if (!strcmp(request, "pop_back")) {
+            int value;
+            value = pop_back(dequeue);
+            if (value == -1) {
+                cout << "error" << endl;
+            } else {
+                cout << value << endl;
+            }
+        } else if (!strcmp(request, "front")) {
+            front(dequeue);
         } else if (!strcmp(request, "back")) {
-            back(stack);
-        } else if (!strcmp(request, "min")) {
-            min(stack);
+            back(dequeue);
         } else if (!strcmp(request, "size")) {
-            size(stack);
+            size(dequeue);
         } else if (!strcmp(request, "clear")) {
-            clear(stack);
+            clear(dequeue);
         }
     }
-    delete stack;
+    delete dequeue;
     return 0;
 }
 
-void push(Stack *stack, int data) {
+void push_back(Dequeue *dequeue, int data) {
     Node *new_node = new Node;
     new_node->value = data;
-    new_node->next = stack->head;
-    if (stack->size == 0) {
-        new_node->local_min = data;
+    new_node->next = dequeue->head;
+    if (dequeue->size == 0) {
+        dequeue->tail = new_node;
     } else {
-        new_node->local_min = (data < stack->head->local_min) ? data : stack->head->local_min;
+        dequeue->head->prev = new_node;
     }
-    stack->head = new_node;
-    ++(stack->size);
+    dequeue->head = new_node;
+    ++(dequeue->size);
     cout << "ok" << endl;
 }
 
-int pop(Stack *stack) {
-    if (stack->size == 0) {
+void push_front(Dequeue *dequeue, int data) {
+    Node *new_node = new Node;
+    new_node->value = data;
+    new_node->prev = dequeue->tail;
+    if (dequeue->size == 0) {
+        dequeue->head = new_node;
+    } else {
+        dequeue->tail->next = new_node;
+    }
+    dequeue->tail = new_node;
+    ++(dequeue->size);
+    cout << "ok" << endl;
+}
+
+int pop_front(Dequeue *dequeue) {
+    if (dequeue->size == 0) {
         return -1;
     }
-    Node *fiction_node = stack->head;
-    int return_value = fiction_node->value;
-    stack->head = stack->head->next;
-    delete fiction_node;
-    --(stack->size);
+    Node *old_tail = dequeue->tail;
+    int return_value = old_tail->value;
+    if (dequeue->size == 1) {
+        dequeue->head = nullptr;
+        dequeue->tail = nullptr;
+    } else {
+        dequeue->tail->prev->next = nullptr;
+        dequeue->tail = dequeue->tail->prev;
+    }
+    delete old_tail;
+    --(dequeue->size);
     return return_value;
 }
 
-void back(Stack *stack) {
-    if (stack->size == 0) {
+int pop_back(Dequeue *dequeue) {
+    if (dequeue->size == 0) {
+        return -1;
+    }
+    Node *old_head = dequeue->head;
+    int return_value = old_head->value;
+    if (dequeue->size == 1) {
+        dequeue->head = nullptr;
+        dequeue->tail = nullptr;
+    } else {
+        dequeue->head->next->prev = nullptr;
+        dequeue->head = dequeue->head->next;
+    }
+    delete old_head;
+    --(dequeue->size);
+    return return_value;
+}
+
+void front(Dequeue *dequeue) {
+    if (dequeue->size == 0) {
         cout << "error" << endl;
         return;
     }
-    cout << stack->head->value << endl;
+    cout << dequeue->tail->value << endl;
 }
 
-void min(Stack *stack) {
-    if (stack->size == 0) {
+void back(Dequeue *dequeue) {
+    if (dequeue->size == 0) {
         cout << "error" << endl;
         return;
     }
-    cout << stack->head->local_min << endl;
+    cout << dequeue->head->value << endl;
 }
 
-void size(Stack *stack) {
-    cout << stack->size << endl;
+void size(Dequeue *dequeue) {
+    cout << dequeue->size << endl;
 }
 
-void clear(Stack *stack) {
-    while (pop(stack) != -1);
+void clear(Dequeue *dequeue) {
+    while (pop_back(dequeue) != -1);
     cout << "ok" << endl;
 }
 
-void printList(const Stack *stack) {
-    Node *curr = stack->head;
+void printList(const Dequeue *dequeue) {
+    Node *curr = dequeue->head;
     bool isFirst = true;
     cout << '[';
     while (curr) {
