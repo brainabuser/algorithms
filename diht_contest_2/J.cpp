@@ -34,8 +34,6 @@ void size(Dequeue *dequeue);
 
 void clear(Dequeue *dequeue);
 
-void printList(const Dequeue *dequeue);
-
 int main() {
     auto *dequeue = new Dequeue;
     int request_number;
@@ -168,20 +166,4 @@ void size(Dequeue *dequeue) {
 void clear(Dequeue *dequeue) {
     while (pop_back(dequeue) != -1);
     cout << "ok" << endl;
-}
-
-void printList(const Dequeue *dequeue) {
-    Node *curr = dequeue->head;
-    bool isFirst = true;
-    cout << '[';
-    while (curr) {
-        if (isFirst) {
-            cout << curr->value;
-            isFirst = false;
-        } else {
-            cout << ", " << curr->value;
-        }
-        curr = curr->next;
-    }
-    cout << "]\n";
 }

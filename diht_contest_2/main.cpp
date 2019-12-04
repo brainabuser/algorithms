@@ -169,3 +169,20 @@ void clear(Heap *heap) {
     heap->size = 0;
     cout << "ok" << endl;
 }
+
+
+void printList(const Dequeue *dequeue) {
+    Node *curr = dequeue->head;
+    bool isFirst = true;
+    cout << '[';
+    while (curr) {
+        if (isFirst) {
+            cout << curr->value;
+            isFirst = false;
+        } else {
+            cout << ", " << curr->value;
+        }
+        curr = curr->next;
+    }
+    cout << "]\n";
+}
