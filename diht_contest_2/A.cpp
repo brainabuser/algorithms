@@ -7,7 +7,7 @@ int extractMax(int *heap, int &heap_size);
 int insert(int *heap, int &heap_size, int capacity, int value);
 
 enum RequestType {
-    DELETE = 1, insert
+    DELETE = 1, INSERT
 };
 
 int main() {
@@ -24,7 +24,7 @@ int main() {
             case DELETE:
                 cout << extractMax(heap, heap_size) << endl;
                 break;
-            case insert:
+            case INSERT:
                 cin >> temp;
                 cout << insert(heap, heap_size, capacity, temp) << endl;
                 break;
