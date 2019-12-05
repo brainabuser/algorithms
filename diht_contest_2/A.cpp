@@ -2,12 +2,12 @@
 
 using namespace std;
 
-int Extract_Max(int *heap, int &heap_size);
+int extractMax(int *heap, int &heap_size);
 
-int Insert(int *heap, int &heap_size, int capacity, int value);
+int insert(int *heap, int &heap_size, int capacity, int value);
 
 enum RequestType {
-    DELETE = 1, INSERT
+    DELETE = 1, insert
 };
 
 int main() {
@@ -22,11 +22,11 @@ int main() {
         request = (RequestType) temp;
         switch (request) {
             case DELETE:
-                cout << Extract_Max(heap, heap_size) << endl;
+                cout << extractMax(heap, heap_size) << endl;
                 break;
-            case INSERT:
+            case insert:
                 cin >> temp;
-                cout << Insert(heap, heap_size, capacity, temp) << endl;
+                cout << insert(heap, heap_size, capacity, temp) << endl;
                 break;
         }
     }
@@ -49,7 +49,7 @@ int getParent(int index) {
     return (index - 1) / 2;
 }
 
-int Sift_Down(int *heap, int index, int heap_size) {
+int siftDown(int *heap, int index, int heap_size) {
     int left = getLeftChild(index);
     int right = getRightChild(index);
     int max_index;
@@ -71,7 +71,7 @@ int Sift_Down(int *heap, int index, int heap_size) {
     return index + 1;
 }
 
-int Extract_Max(int *heap, int &heap_size) {
+int extractMax(int *heap, int &heap_size) {
     if (heap_size == 0) {
         return -1;
     } else if (heap_size == 1) {
@@ -82,11 +82,11 @@ int Extract_Max(int *heap, int &heap_size) {
     int elem = heap[0];
     --heap_size;
     swap(heap[0], heap[heap_size]);
-    cout << Sift_Down(heap, 0, heap_size) << ' ';
+    cout << siftDown(heap, 0, heap_size) << ' ';
     return elem;
 }
 
-int Sift_Up(int *heap, int index) {
+int sifrUp(int *heap, int index) {
     while (index != 0 && heap[index] > heap[getParent(index)]) {
         swap(heap[index], heap[getParent(index)]);
         index = getParent(index);
@@ -94,12 +94,12 @@ int Sift_Up(int *heap, int index) {
     return index + 1;
 }
 
-int Insert(int *heap, int &heap_size, int capacity, int value) {
+int insert(int *heap, int &heap_size, int capacity, int value) {
     if (heap_size >= capacity) {
         return -1;
     } else {
         ++heap_size;
         heap[heap_size - 1] = value;
-        return Sift_Up(heap, heap_size - 1);
+        return sifrUp(heap, heap_size - 1);
     }
 }
