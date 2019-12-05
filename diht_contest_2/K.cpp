@@ -1,7 +1,5 @@
 #include <iostream>
 
-#include <cstring>
-
 #include <cstdlib>
 
 using namespace std;
@@ -20,16 +18,6 @@ struct Stack {
 void push(Stack *stack, int data);
 
 int pop(Stack *stack);
-
-void back(Stack *stack);
-
-void min(Stack *stack);
-
-void size(Stack *stack);
-
-void clear(Stack *stack);
-
-void printList(const Stack *stack);
 
 int computeExpression(int x, int y, char exp) {
     if (exp == '+') {
