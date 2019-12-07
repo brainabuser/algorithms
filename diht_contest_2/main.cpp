@@ -6,33 +6,61 @@ using namespace std;
 
 #define max_request_size 12
 
-struct Node {
-    int value;
-    int insert_number;
+#define capacity 200000
+
+struct NodeMin {
+    int insert = -1;
+    int index_max = -1;
 };
 
-struct Heap {
-    int size;
-    int capacity;
-    Node *heap;
+struct NodeMax {
+    int insert = -1;
+    int index_min = -1;
 };
 
-void extractMin(Heap *heap);
+struct MinHeap {
+    int size = 0;
+    NodeMin *nodes = new NodeMin[capacity];
+};
 
-void insert(Heap *heap, Node new_node);
+struct MaxHeap {
+    int size = 0;
+    NodeMax *nodes = new NodeMax[capacity];
+};
 
-void extractByIndex(Heap *heap, int index);
+struct DoubleHeap {
+    int *values = new int[capacity];
+    MinHeap *min_heap = new MinHeap;
+    MaxHeap *max_heap = new MaxHeap;
+};
 
-void changeByIndex(Heap *heap, int index, int new_value);
+void insert(DoubleHeap *heap, int value, int insert_index);
 
-void getMin(Heap *heap);
+void extractMin(DoubleHeap *heap);
 
-void clear(Heap *heap);
+void extractMax(DoubleHeap *heap);
+
+void getMin(DoubleHeap *heap);
+
+void getMax(DoubleHeap *heap);
+
+void clear(DoubleHeap *heap, int used_memory);
+
+int size(DoubleHeap *heap);
+
+void printHeap(DoubleHeap *heap);
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
     int request_number;
     cin >> request_number;
-    Heap *heap = new Heap{0, request_number, new Node[request_number]};
+    auto *my_heap = new DoubleHeap;
+    for (int i = 0; i < request_number; ++i) {
+        my_heap->values[i] = -1;
+        my_heap->min_heap->nodes[i] = NodeMin();
+        my_heap->max_heap->nodes[i] = NodeMax();
+    }
     int insert_counter = 0;
     for (int i = 0; i < request_number; ++i) {
         char request[max_request_size];
@@ -40,27 +68,33 @@ int main() {
         if (!strcmp(request, "insert")) {
             int value;
             cin >> value;
-            insert(heap, Node{value, ++insert_counter});
-        } else if (!strcmp(request, "extract_min")) {
-            extractMin(heap);
-        } else if (!strcmp(request, "delete")) {
-            int insert_index;
-            cin >> insert_index;
-            extractByIndex(heap, insert_index);
-        } else if (!strcmp(request, "change")) {
-            int insert_index, new_value;
-            cin >> insert_index >> new_value;
-            changeByIndex(heap, insert_index, new_value);
-        } else if (!strcmp(request, "get_min")) {
-            getMin(heap);
-        } else if (!strcmp(request, "size")) {
-            cout << heap->size << endl;
-        } else if (!strcmp(request, "clear")) {
-            clear(heap);
+            insert(my_heap, value, insert_counter);
+            ++insert_counter;
         }
+        if (!strcmp(request, "extract_min")) {
+            extractMin(my_heap);
+        }
+        if (!strcmp(request, "get_min")) {
+            getMin(my_heap);
+        }
+        if (!strcmp(request, "extract_max")) {
+            extractMax(my_heap);
+        }
+        if (!strcmp(request, "get_max")) {
+            getMax(my_heap);
+        }
+        if (!strcmp(request, "size")) {
+            cout << size(my_heap) << endl;
+        }
+        if (!strcmp(request, "clear")) {
+            clear(my_heap, insert_counter);
+        }
+        printHeap(my_heap);
     }
-    delete[] heap->heap;
-    delete heap;
+    delete my_heap->min_heap;
+    delete my_heap->max_heap;
+    delete[] my_heap->values;
+    delete my_heap;
     return 0;
 }
 
@@ -76,19 +110,25 @@ int getParent(int index) {
     return (index - 1) / 2;
 }
 
-int siftDown(Heap *heap, int index) {
+int minSiftDown(DoubleHeap *heap, int index) {
     int left = getLeftChild(index);
     int right = getRightChild(index);
-    int min_index;
-    while (left < heap->size &&
-           (heap->heap[index].value > heap->heap[left].value || heap->heap[index].value > heap->heap[right].value)) {
-        if (min(heap->heap[left].value, heap->heap[right].value) < heap->heap[index].value && right < heap->size) {
-            min_index = (heap->heap[left].value < heap->heap[right].value) ? left : right;
-        } else {
-            min_index = (heap->heap[left].value < heap->heap[index].value) ? left : index;
+    NodeMin *nodes = heap->min_heap->nodes;
+    NodeMax *max_nodes = heap->max_heap->nodes;
+    int *values = heap->values;
+    int size = heap->min_heap->size;
+    int min_index = index;
+    while ((min(right, left)) < size &&
+           values[nodes[index].insert] > min(values[nodes[left].insert], values[nodes[right].insert])) {
+        if (right < size && values[nodes[right].insert] < values[nodes[min_index].insert]) {
+            min_index = right;
+        }
+        if (left < size && values[nodes[left].insert] < values[nodes[min_index].insert]) {
+            min_index = left;
         }
         if (min_index != index) {
-            swap(heap->heap[index], heap->heap[min_index]);
+            swap(nodes[index], nodes[min_index]);
+            swap(max_nodes[nodes[index].index_max].index_min, max_nodes[nodes[min_index].index_max].index_min);
             index = min_index;
         } else {
             break;
@@ -99,90 +139,166 @@ int siftDown(Heap *heap, int index) {
     return index;
 }
 
-void extractMin(Heap *heap) {
-    if (heap->size == 0) {
-        cout << "error" << endl;
-        return;
+int maxSiftDown(DoubleHeap *heap, int index) {
+    int left = getLeftChild(index);
+    int right = getRightChild(index);
+    NodeMax *nodes = heap->max_heap->nodes;
+    NodeMin *min_nodes = heap->min_heap->nodes;
+    int *values = heap->values;
+    int size = heap->min_heap->size;
+    int max_index = index;
+    while ((min(right, left)) < size &&
+           values[nodes[index].insert] < min(values[nodes[left].insert], values[nodes[right].insert])) {
+        if (right < size && values[nodes[right].insert] > values[nodes[max_index].insert]) {
+            max_index = right;
+        }
+        if (left < size && values[nodes[left].insert] > values[nodes[max_index].insert]) {
+            max_index = left;
+        }
+        if (max_index != index) {
+            swap(nodes[index], nodes[max_index]);
+            swap(min_nodes[nodes[index].index_min].index_max, min_nodes[nodes[max_index].index_min].index_max);
+            index = max_index;
+        } else {
+            break;
+        }
+        left = getLeftChild(index);
+        right = getRightChild(index);
     }
-    int elem = heap->heap[0].value;
-    --(heap->size);
-    if (heap->size != 0) {
-        heap->heap[0] = heap->heap[heap->size];
-        siftDown(heap, 0);
-    }
-    cout << elem << endl;
+    return index;
 }
 
-int siftUp(Heap *heap, int index) {
-    while (index != 0 && heap->heap[index].value < heap->heap[getParent(index)].value) {
-        swap(heap->heap[index], heap->heap[getParent(index)]);
+int minSiftUp(DoubleHeap *heap, int index) {
+    NodeMin *nodes = heap->min_heap->nodes;
+    NodeMax *max_nodes = heap->max_heap->nodes;
+    int *values = heap->values;
+    while (index != 0 && values[nodes[index].insert] < values[nodes[getParent(index)].insert]) {
+        swap(nodes[index], nodes[getParent(index)]);
+        swap(max_nodes[nodes[index].index_max].index_min, max_nodes[nodes[getParent(index)].index_max].index_min);
         index = getParent(index);
     }
     return index;
 }
 
-void insert(Heap *heap, Node new_node) {
-    ++(heap->size);
-    heap->heap[heap->size - 1] = new_node;
-    siftUp(heap, heap->size - 1);
+int maxSiftUp(DoubleHeap *heap, int index) {
+    NodeMax *nodes = heap->max_heap->nodes;
+    NodeMin *min_nodes = heap->min_heap->nodes;
+    int *values = heap->values;
+    while (index != 0 && values[nodes[index].insert] > values[nodes[getParent(index)].insert]) {
+        swap(nodes[index], nodes[getParent(index)]);
+        swap(min_nodes[nodes[index].index_min].index_max, min_nodes[nodes[getParent(index)].index_min].index_max);
+        index = getParent(index);
+    }
+    return index;
+}
+
+void insert(DoubleHeap *heap, int value, int insert_index) {
+    NodeMax *max_nodes = heap->max_heap->nodes;
+    NodeMin *min_nodes = heap->min_heap->nodes;
+    int *values = heap->values;
+    ++(heap->max_heap->size);
+    ++(heap->min_heap->size);
+    int size = heap->max_heap->size;
+    values[insert_index] = value;
+    max_nodes[size - 1].index_min = min_nodes[size - 1].index_max = size - 1;;
+    min_nodes[size - 1].insert = max_nodes[size - 1].insert = insert_index;
+    maxSiftUp(heap, size - 1);
+    minSiftUp(heap, size - 1);
     cout << "ok" << endl;
 }
 
-void extractByIndex(Heap *heap, int insert_index) {
-    for (int i = 0; i < heap->size; ++i) {
-        if (heap->heap[i].insert_number == insert_index) {
-            --(heap->size);
-            if (heap->size != 0) {
-                swap(heap->heap[i], heap->heap[heap->size]);
-                siftDown(heap, siftUp(heap, i));
-            }
-            cout << "ok" << endl;
-            return;
-        }
-    }
-    cout << "error" << endl;
-}
-
-void changeByIndex(Heap *heap, int insert_index, int new_value) {
-    for (int i = 0; i < heap->size; ++i) {
-        if (heap->heap[i].insert_number == insert_index) {
-            heap->heap[i].value = new_value;
-            siftDown(heap, siftUp(heap, i));
-            cout << "ok" << endl;
-            return;
-        }
-    }
-    cout << "error" << endl;
-}
-
-void getMin(Heap *heap) {
-    if (heap->size == 0) {
+void extractMin(DoubleHeap *heap) {
+    if (size(heap) == 0) {
         cout << "error" << endl;
         return;
     }
-    cout << heap->heap[0].value << endl;
+    NodeMin *min_nodes = heap->min_heap->nodes;
+    NodeMax *max_nodes = heap->max_heap->nodes;
+    int *values = heap->values;
+    int size = heap->min_heap->size;
+    int value_to_delete = values[min_nodes[0].insert];
+    int needed_index = min_nodes[0].index_max;
+    --(heap->min_heap->size);
+    --(heap->max_heap->size);
+    if (size != 1) {
+        swap(min_nodes[0], min_nodes[size - 1]);
+        swap(max_nodes[min_nodes[0].index_max].index_min, max_nodes[min_nodes[size - 1].index_max].index_min);
+        minSiftDown(heap, 0);
+        swap(max_nodes[needed_index], max_nodes[size - 1]);
+        swap(min_nodes[max_nodes[needed_index].index_min].index_max,
+             min_nodes[max_nodes[size - 1].index_min].index_max);
+        maxSiftDown(heap, maxSiftUp(heap, needed_index));
+    }
+    cout << value_to_delete << endl;
 }
 
-void clear(Heap *heap) {
-    delete[] heap->heap;
-    heap->heap = new Node[heap->capacity];
-    heap->size = 0;
+void extractMax(DoubleHeap *heap) {
+    if (size(heap) == 0) {
+        cout << "error" << endl;
+        return;
+    }
+    NodeMin *min_nodes = heap->min_heap->nodes;
+    NodeMax *max_nodes = heap->max_heap->nodes;
+    int *values = heap->values;
+    int size = heap->max_heap->size;
+    int value_to_delete = values[max_nodes[0].insert];
+    int needed_index = max_nodes[0].index_min;
+    --(heap->min_heap->size);
+    --(heap->max_heap->size);
+    if (size != 1) {
+        swap(max_nodes[0], max_nodes[size - 1]);
+        swap(min_nodes[max_nodes[0].index_min].index_max, min_nodes[max_nodes[size - 1].index_min].index_max);
+        maxSiftDown(heap, 0);
+        swap(min_nodes[needed_index], min_nodes[size - 1]);
+        swap(max_nodes[min_nodes[needed_index].index_max].index_min,
+             max_nodes[min_nodes[size - 1].index_max].index_min);
+        minSiftDown(heap, minSiftUp(heap, needed_index));
+    }
+    cout << value_to_delete << endl;
+}
+
+int size(DoubleHeap *heap) {
+    return (heap->max_heap->size + heap->min_heap->size) / 2;
+}
+
+void getMin(DoubleHeap *heap) {
+    if (size(heap) == 0) {
+        cout << "error" << endl;
+        return;
+    }
+    cout << heap->values[heap->min_heap->nodes[0].insert] << endl;
+}
+
+void getMax(DoubleHeap *heap) {
+    if (size(heap) == 0) {
+        cout << "error" << endl;
+        return;
+    }
+    cout << heap->values[heap->max_heap->nodes[0].insert] << endl;
+}
+
+void clear(DoubleHeap *heap, int used_memory) {
+    heap->min_heap->size = 0;
+    heap->max_heap->size = 0;
+    for (int i = 0; i < used_memory; ++i) {
+        heap->values[i] = -1;
+        heap->min_heap->nodes[i] = NodeMin();
+        heap->max_heap->nodes[i] = NodeMax();
+    }
     cout << "ok" << endl;
 }
 
-
-void printList(const Dequeue *dequeue) {
-    Node *curr = dequeue->head;
-    bool isFirst = true;
-    cout << '[';
-    while (curr) {
-        if (isFirst) {
-            cout << curr->value;
-            isFirst = false;
-        } else {
-            cout << ", " << curr->value;
-        }
-        curr = curr->next;
+void printHeap(DoubleHeap *heap) {
+    cout << "Min heap:" << endl;
+    for (int i = 0; i < heap->min_heap->size; ++i) {
+        cout << heap->values[heap->min_heap->nodes[i].insert] << '(' << heap->min_heap->nodes[i].index_max << ')'
+             << ' ';
     }
-    cout << "]\n";
+    cout << endl;
+    cout << "Max heap:" << endl;
+    for (int i = 0; i < heap->max_heap->size; ++i) {
+        cout << heap->values[heap->max_heap->nodes[i].insert] << '(' << heap->max_heap->nodes[i].index_min << ')'
+             << ' ';
+    }
+    cout << endl;
 }

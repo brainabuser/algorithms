@@ -57,8 +57,10 @@ int main() {
             size(stack);
         } else if (!strcmp(request, "clear")) {
             clear(stack);
+            cout << "ok" << endl;
         }
     }
+    clear(stack);
     delete stack;
     return 0;
 }
@@ -111,7 +113,6 @@ void size(Stack *stack) {
 
 void clear(Stack *stack) {
     while (pop(stack) != -1);
-    cout << "ok" << endl;
 }
 
 void printList(const Stack *stack) {

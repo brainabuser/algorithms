@@ -59,10 +59,12 @@ int main() {
             cout << size(queue) << endl;
         } else if (!strcmp(request, "clear")) {
             clear(queue);
+            cout << "ok" << endl;
         } else if (!strcmp(request, "min")) {
             min(queue);
         }
     }
+    clear(queue);
     delete queue;
     return 0;
 }
@@ -141,7 +143,6 @@ int size(Queue *queue) {
 void clear(Queue *queue) {
     clear(queue->right);
     clear(queue->left);
-    cout << "ok" << endl;
 }
 
 void min(Queue *queue) {

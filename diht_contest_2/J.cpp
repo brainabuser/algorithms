@@ -73,8 +73,10 @@ int main() {
             size(dequeue);
         } else if (!strcmp(request, "clear")) {
             clear(dequeue);
+            cout << "ok" << endl;
         }
     }
+    clear(dequeue);
     delete dequeue;
     return 0;
 }
@@ -165,5 +167,4 @@ void size(Dequeue *dequeue) {
 
 void clear(Dequeue *dequeue) {
     while (pop_back(dequeue) != -1);
-    cout << "ok" << endl;
 }
