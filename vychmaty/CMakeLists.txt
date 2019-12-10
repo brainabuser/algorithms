@@ -3,4 +3,4 @@ project(vychmaty)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(vychmaty vychmaty5.cpp)
+add_executable(vychmaty vychmaty6.cpp)
