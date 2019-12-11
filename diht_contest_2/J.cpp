@@ -18,13 +18,13 @@ struct Dequeue {
     Node *tail = nullptr;
 };
 
-void push_front(Dequeue *dequeue, int data);
+void pushFront(Dequeue *dequeue, int data);
 
-void push_back(Dequeue *dequeue, int data);
+void pushBack(Dequeue *dequeue, int data);
 
-int pop_front(Dequeue *dequeue);
+int popFront(Dequeue *dequeue);
 
-int pop_back(Dequeue *dequeue);
+int popBack(Dequeue *dequeue);
 
 void front(Dequeue *dequeue);
 
@@ -44,14 +44,14 @@ int main() {
         if (!strcmp(request, "push_front")) {
             int value;
             cin >> value;
-            push_front(dequeue, value);
+            pushFront(dequeue, value);
         } else if (!strcmp(request, "push_back")) {
             int value;
             cin >> value;
-            push_back(dequeue, value);
+            pushBack(dequeue, value);
         } else if (!strcmp(request, "pop_front")) {
             int value;
-            value = pop_front(dequeue);
+            value = popFront(dequeue);
             if (value == -1) {
                 cout << "error" << endl;
             } else {
@@ -59,7 +59,7 @@ int main() {
             }
         } else if (!strcmp(request, "pop_back")) {
             int value;
-            value = pop_back(dequeue);
+            value = popBack(dequeue);
             if (value == -1) {
                 cout << "error" << endl;
             } else {
@@ -81,7 +81,7 @@ int main() {
     return 0;
 }
 
-void push_back(Dequeue *dequeue, int data) {
+void pushBack(Dequeue *dequeue, int data) {
     Node *new_node = new Node;
     new_node->value = data;
     new_node->next = dequeue->head;
@@ -95,7 +95,7 @@ void push_back(Dequeue *dequeue, int data) {
     cout << "ok" << endl;
 }
 
-void push_front(Dequeue *dequeue, int data) {
+void pushFront(Dequeue *dequeue, int data) {
     Node *new_node = new Node;
     new_node->value = data;
     new_node->prev = dequeue->tail;
@@ -109,7 +109,7 @@ void push_front(Dequeue *dequeue, int data) {
     cout << "ok" << endl;
 }
 
-int pop_front(Dequeue *dequeue) {
+int popFront(Dequeue *dequeue) {
     if (dequeue->size == 0) {
         return -1;
     }
@@ -127,7 +127,7 @@ int pop_front(Dequeue *dequeue) {
     return return_value;
 }
 
-int pop_back(Dequeue *dequeue) {
+int popBack(Dequeue *dequeue) {
     if (dequeue->size == 0) {
         return -1;
     }
@@ -166,5 +166,5 @@ void size(Dequeue *dequeue) {
 }
 
 void clear(Dequeue *dequeue) {
-    while (pop_back(dequeue) != -1);
+    while (popBack(dequeue) != -1);
 }

@@ -11,6 +11,7 @@ struct Node {
 struct Dequeue {
     int size = 0;
     Node *head = nullptr;
+    Node *tummy = nullptr;//от англ. "брюшко"
     Node *tail = nullptr;
 };
 
@@ -54,8 +55,12 @@ void pushBack(Dequeue *dequeue, int data) {
     new_node->next = dequeue->head;
     if (dequeue->size == 0) {
         dequeue->tail = new_node;
+        dequeue->tummy = new_node;
     } else {
         dequeue->head->prev = new_node;
+        if (dequeue->size % 2 != 0) {
+            dequeue->tummy = dequeue->tummy->prev;
+        }
     }
     dequeue->head = new_node;
     ++(dequeue->size);
@@ -66,19 +71,20 @@ void pushMid(Dequeue *dequeue, int data) {
         pushBack(dequeue, data);
         return;
     }
-    int needed_pos = dequeue->size / 2;
-    int curr = 1;
-    Node *curr_node = dequeue->head;
-    while (curr != needed_pos) {
-        ++curr;
-        curr_node = curr_node->next;
-    }
     Node *new_node = new Node;
     new_node->value = data;
-    new_node->next = curr_node->next;
-    new_node->prev = curr_node;
-    curr_node->next->prev = new_node;
-    curr_node->next = new_node;
+    if (dequeue->size % 2 == 0) {
+        new_node->next = dequeue->tummy->next;
+        new_node->prev = dequeue->tummy;
+        dequeue->tummy->next->prev = new_node;
+        dequeue->tummy->next = new_node;
+    } else {
+        new_node->next = dequeue->tummy;
+        new_node->prev = dequeue->tummy->prev;
+        dequeue->tummy->prev->next = new_node;
+        dequeue->tummy->prev = new_node;
+    }
+    dequeue->tummy = new_node;
     ++(dequeue->size);
 }
 
@@ -90,8 +96,12 @@ int popFront(Dequeue *dequeue) {
     int return_value = old_tail->value;
     if (dequeue->size == 1) {
         dequeue->head = nullptr;
+        dequeue->tummy = nullptr;
         dequeue->tail = nullptr;
     } else {
+        if (dequeue->size % 2 != 0) {
+            dequeue->tummy = dequeue->tummy->prev;
+        }
         dequeue->tail->prev->next = nullptr;
         dequeue->tail = dequeue->tail->prev;
     }
