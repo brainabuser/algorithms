@@ -1,159 +1,72 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
-struct Node {
-    int value = -1;
-    Node *next = nullptr;
+struct Contestant {
+    int grades = -1;
+    int id = -1;
 };
 
-struct Stack {
-    int size = 0;
-    Node *head = nullptr;
-};
+void readArray(Contestant *array, const int &size);
 
-struct GoblinQueue {
-    Stack *left = new Stack;
-    Stack *right = new Stack;
-};
+void printArray(Contestant *array, const int &size);
 
-void enqueue(GoblinQueue *queue, int value);
-
-void midEnqueue(GoblinQueue *queue, int value);
-
-int dequeue(GoblinQueue *queue);
-
-int size(GoblinQueue *queue);
-
-void clear(GoblinQueue *queue);
-
-void printList(const Stack *stack);
+void quickSort(Contestant *array, const int &left, const int &right);
 
 int main() {
-    auto *queue = new GoblinQueue;
-    int request_number;
-    cin >> request_number;
-    for (int i = 0; i < request_number; ++i) {
-        char request;
-        cin >> request;
-        if (request != '-') {
-            int number;
-            cin >> number;
-            if (request == '+') {
-                enqueue(queue, number);
-            } else {
-                midEnqueue(queue, number);
-            }
-        } else {
-            cout << dequeue(queue) << endl;
-        }
-    }
-    clear(queue);
-    delete queue;
+    int n;
+    cin >> n;
+    auto *competitors = new Contestant[n];
+    readArray(competitors, n);
+    quickSort(competitors, 0, n - 1);
+    printArray(competitors, n);
+    delete[] competitors;
     return 0;
 }
 
-void push(Stack *stack, int data) {
-    Node *new_node = new Node;
-    new_node->value = data;
-    new_node->next = stack->head;
-    stack->head = new_node;
-    ++(stack->size);
-}
-
-int pop(Stack *stack) {
-    if (stack->size == 0) {
-        return -1;
+void readArray(Contestant *array, const int &size) {
+    for (int i = 0; i < size; ++i) {
+        cin >> array[i].id >> array[i].grades;
     }
-    Node *fiction_node = stack->head;
-    int return_value = fiction_node->value;
-    stack->head = stack->head->next;
-    delete fiction_node;
-    --(stack->size);
-    return return_value;
 }
 
-int size(Stack *stack) {
-    return stack->size;
+void printArray(Contestant *array, const int &size) {
+    for (int i = 0; i < size; ++i) {
+        cout << array[i].id << ' ' << array[i].grades << endl;
+    }
 }
 
-void clear(Stack *stack) {
-    while (pop(stack) != -1);
-}
-
-void enqueue(GoblinQueue *queue, int value) {
-    push(queue->left, value);
-}
-
-void midEnqueue(GoblinQueue *queue, int value) {
-    int needed_position = size(queue) / 2;
-    if (queue->left->size >= queue->right->size) {
-        Node *left_curr = queue->left->head;
-        int cnt = 0;
-        while (left_curr->next != nullptr) {
-            ++cnt;
-            if (cnt == needed_position) {
-                Node *new_node = new Node;
-                new_node->value = value;
-                new_node->next = left_curr->next;
-                left_curr->next = new_node;
-                break;
+int partition(Contestant *array, const int &left, const int &right) {
+    int pivot = array[(left + right) / 2].grades;
+    int i = left - 1;
+    int j = right + 1;
+    while (true) {
+        do {
+            ++i;
+        } while (array[i].grades > pivot);
+        do {
+            --j;
+        } while (array[j].grades < pivot);
+        if (i >= j) {
+            return j;
+        }
+        if (array[i].grades == array[j].grades) {
+            if(array[i].id > array[j].id){
+                swap(array[i].id, array[j].id);
+            }else{
+                swap(array[i].grades, array[j].grades);
             }
-            left_curr = left_curr->next;
-        }
-        ++(queue->left->size);
-    } else {
-        Node *right_curr = queue->right->head;
-        int cnt = 0;
-        while (right_curr != nullptr) {
-            ++cnt;
-            if (cnt == needed_position) {
-                Node *new_node = new Node;
-                new_node->value = value;
-                new_node->next = right_curr->next;
-                right_curr->next = new_node;
-                break;
-            }
-            right_curr = right_curr->next;
-        }
-        ++(queue->right->size);
-    }
-
-}
-
-int dequeue(GoblinQueue *queue) {
-    if (size(queue) == 0) {
-        return -1;
-    }
-    if (queue->right->size == 0) {
-        while (queue->left->size != 0) {
-            push(queue->right, pop(queue->left));
-        }
-    }
-    return pop(queue->right);
-}
-
-int size(GoblinQueue *queue) {
-    return queue->left->size + queue->right->size;
-}
-
-void clear(GoblinQueue *queue) {
-    clear(queue->right);
-    clear(queue->left);
-}
-
-void printList(const Stack *stack) {
-    Node *curr = stack->head;
-    bool isFirst = true;
-    cout << '[';
-    while (curr) {
-        if (isFirst) {
-            cout << curr->value;
-            isFirst = false;
         } else {
-            cout << ", " << curr->value;
+            swap(array[i], array[j]);
         }
-        curr = curr->next;
     }
-    cout << "]\n";
+}
+
+void quickSort(Contestant *array, const int &left, const int &right) {
+    if (left < right) {
+        int pivot = partition(array, left, right);
+        quickSort(array, left, pivot);
+        quickSort(array, pivot + 1, right);
+    }
 }
