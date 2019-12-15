@@ -23,30 +23,39 @@ int main() {
     for (int i = 0; i < size1; ++i) {
         cls[i] = new int[size2]();
     }
-    int size = min(size1, size2);
-    int *seq = new int[size];
-    int cnt = 0;
     for (int i = 1; i < size1; ++i) {
         for (int j = 1; j < size2; ++j) {
             if (seq1[i] == seq2[j]) {
                 cls[i][j] = cls[i - 1][j - 1] + 1;
-                if (cnt < cls[i][j]) {
-                    seq[cnt++] = seq1[i];
-                }
             } else {
                 cls[i][j] = max(cls[i - 1][j], cls[i][j - 1]);
             }
         }
     }
-    for (int i = 0; i < cnt; ++i) {
-        cout << seq[i] << ' ';
+    int i = size1 - 1, j = size2 - 1;
+    int size = cls[i][j];
+    int cnt = 0;
+    int *seq = new int[size];
+    while (i != 0 && j != 0) {
+        if (seq1[i] == seq2[j] && cls[i][j] == cls[i - 1][j - 1] + 1) {
+            seq[cnt++] = seq1[i];
+            --i;
+            --j;
+        } else if (cls[i][j - 1] == max(cls[i][j - 1], cls[i - 1][j])) {
+            --j;
+        } else {
+            --i;
+        }
+    }
+    for (int k = size - 1; k >= 0; --k) {
+        cout << seq[k] << ' ';
     }
     delete[] seq;
-    delete[] seq1;
-    delete[] seq2;
-    for (int i = 0; i < size1; ++i) {
-        delete[] cls[i];
+    for (int l = 0; l < size1; ++l) {
+        delete[] cls[l];
     }
     delete[] cls;
+    delete[] seq1;
+    delete[] seq2;
     return 0;
 }
