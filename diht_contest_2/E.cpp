@@ -48,9 +48,12 @@ void clear(DoubleHeap *heap, int used_memory);
 
 int size(DoubleHeap *heap);
 
+void printHeap(DoubleHeap *heap);
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
+    cout.tie(nullptr);
     int request_number;
     cin >> request_number;
     auto *my_heap = new DoubleHeap;
@@ -145,7 +148,7 @@ int maxSiftDown(DoubleHeap *heap, int index) {
     int size = heap->min_heap->size;
     int max_index = index;
     while ((min(right, left)) < size &&
-           values[nodes[index].insert] < min(values[nodes[left].insert], values[nodes[right].insert])) {
+           values[nodes[index].insert] < max(values[nodes[left].insert], values[nodes[right].insert])) {
         if (right < size && values[nodes[right].insert] > values[nodes[max_index].insert]) {
             max_index = right;
         }
@@ -283,4 +286,17 @@ void clear(DoubleHeap *heap, int used_memory) {
         heap->max_heap->nodes[i] = NodeMax();
     }
     cout << "ok" << endl;
+}
+
+void printHeap(DoubleHeap *heap) {
+    cout << "Max heap:" << endl;
+    for (int i = 0; i < heap->max_heap->size; ++i) {
+        cout << heap->values[heap->max_heap->nodes[i].insert] << "(" << heap->max_heap->nodes[i].index_min << ") ";
+    }
+    cout << endl;
+    cout << "Min heap:" << endl;
+    for (int i = 0; i < heap->min_heap->size; ++i) {
+        cout << heap->values[heap->min_heap->nodes[i].insert] << "(" << heap->min_heap->nodes[i].index_max << ") ";
+    }
+    cout << endl;
 }

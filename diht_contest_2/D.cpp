@@ -31,7 +31,7 @@ void getMin(Heap *heap);
 
 void clear(Heap *heap, int extra_memory);
 
-int main(){
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     int request_number;
