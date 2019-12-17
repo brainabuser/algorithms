@@ -3,4 +3,4 @@ project(diht_contest_2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(diht_contest_2 E.cpp)
+add_executable(diht_contest_2 Z.cpp)
