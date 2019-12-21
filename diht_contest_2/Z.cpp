@@ -28,7 +28,7 @@ int main() {
     }
     for (int i = 0; i < possibleValues; ++i) {
         tiles[0][i] = 1;
-    }
+   }
     for (int i = 1; i < m; ++i) {
         for (int j = 0; j < possibleValues; ++j) {
             tiles[i][j] = 0;
@@ -46,6 +46,12 @@ int main() {
     int answer = 0;
     for (int i = 0; i < possibleValues; ++i) {
         answer += tiles[m - 1][i];
+    }
+    for (int i = 0; i < m; ++i) {
+        for (int j = 0; j < possibleValues; ++j) {
+            cout << tiles[i][j] << ' ';
+        }
+        cout << endl;
     }
     cout << answer << endl;
     for (int i = 0; i < m; ++i) {
