@@ -10,8 +10,8 @@ double getR_K_member(const double &x, const double &y, const double &z, const do
 double getR_K_member(const double &z, const double &t);
 
 int main() {
-    ofstream output(R"(D:\CLionsProjects\Vychmaty_task_2\T_4\Output.csv)");
-    ofstream output0(R"(D:\CLionsProjects\Vychmaty_task_2\T_4\Output0.csv)");
+    ofstream output(R"(D:\CLionsProjects\computational_math\task_2\T_4\Output.csv)");
+    ofstream output0(R"(D:\CLionsProjects\computational_math\task_2\T_4\Output0.csv)");
     cout << "Enter the error value" << endl;
     double error;
     cin >> error;
