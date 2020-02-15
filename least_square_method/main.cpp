@@ -10,7 +10,7 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    ifstream input("C:\\Users\\Vladimir\\Desktop\\HARD WORK PAYS OFF\\Labs\\5 sem\\input.csv");
+    ifstream input("D:\\HARD WORK PAYS OFF\\Labs\\5 sem\\input.csv");
     if (!input.is_open()) {
         throw runtime_error("File not found.");
     }
@@ -38,7 +38,7 @@ int main() {
     const long double a = Sy - b * Sx;
     const long double delta_b = 1/sqrt(n) * sqrt((Sy2 - Sy * Sy) / (Sx2 - Sx * Sx) - b * b);
     const long double delta_a = delta_b * sqrt((Sx2) - (Sx * Sx));
-    ofstream output("C:\\Users\\Vladimir\\Desktop\\HARD WORK PAYS OFF\\Labs\\5 sem\\output.txt");
+    ofstream output("D:\\HARD WORK PAYS OFF\\Labs\\5 sem\\output.txt");
     output << "y = " << b;
     if (a > 0.0) {
         output << "*x+" << a << endl;

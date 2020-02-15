@@ -51,7 +51,7 @@ int main() {
         z[0] -= (prev_last_elem - y1) / (last_elem - prev_last_elem) * t;
         prev_last_elem = last_elem;
     } while (abs(last_elem - y1) > error);
-    for (size_t i = 0; i < x_size; ++i) {
+    for (size_t i = 0; i < x_size; ++i)n {
         output << x[i] << ';' << y[i] << endl;
     }
     return 0;
