@@ -8,11 +8,11 @@ class MyString {
   public:
     MyString() : data(nullptr) {}
     MyString(const MyString &line) {
-        data = new char[strlen(line.data)];
+        data = new char[strlen(line.data) + 1];
         strcpy(data, line.data);
     }
     MyString(const char *line) {
-        this->data = new char[strlen(line)];
+        this->data = new char[strlen(line) + 1];
         strcpy(this->data, line);
     }
     ~MyString() {
@@ -23,7 +23,7 @@ class MyString {
             return *this;
         }
         delete this->data;
-        data = new char[strlen(line.data)];
+        data = new char[strlen(line.data) + 1];
         strcpy(this->data, line.data);
         return *this;
     }
@@ -45,7 +45,7 @@ ostream &operator<<(ostream &os, const MyString &s) {
     return os;
 }
 MyString operator+(const char *a, const MyString &s) {
-    char *line = new char[strlen(a) + strlen(s.data) - 1]{0};
+    char *line = new char[strlen(a) + strlen(s.data) + 1]{0};
     strcat(strcat(line, a), s.data);
     MyString string(line);
     delete[] line;
