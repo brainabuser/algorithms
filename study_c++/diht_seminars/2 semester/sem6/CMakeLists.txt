@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
-project(sem4)
+project(sem6)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(sem4 main.cpp)
+add_executable(sem6 main.cpp)

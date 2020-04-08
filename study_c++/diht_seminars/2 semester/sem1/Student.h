@@ -26,7 +26,7 @@ class Student {
 
     int getYear() const;
 
-    void setYear(const int currYear);
+    void setYear(const int& currYear);
 
     void setName(const char *newName);
 

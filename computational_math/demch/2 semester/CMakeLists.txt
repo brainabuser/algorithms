@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
-project(sem4)
+project(2_semester)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(sem4 main.cpp)
+add_executable(2_semester sem1.cpp)
