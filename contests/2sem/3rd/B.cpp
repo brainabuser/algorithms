@@ -20,11 +20,7 @@ int main() {
         int temp;
         cin >> temp;
         auto lower = lower_bound(beasts.begin(), beasts.end(), temp);
-        if (lower == beasts.end()) {
-            cout << 0 << endl;
-        } else {
-            cout << upper_bound(lower, beasts.end(), temp) - lower << endl;
-        }
+        cout << upper_bound(lower, beasts.end(), temp) - lower << endl;
     }
     return 0;
 }
