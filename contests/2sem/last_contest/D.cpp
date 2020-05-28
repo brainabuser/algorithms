@@ -18,7 +18,7 @@ class NumberList {
     };
     map<string, Person> name_to_person;
   public:
-    void addPerson(string name, string number = "", string email = "") {
+    void addPerson(const string &name, const string &number = "", const string &email = "") {
         if (name_to_person.count(name) != 0) {
             cout << "FAIL" << endl;
             return;
@@ -38,7 +38,7 @@ class NumberList {
         }
         cout << "DONE" << endl;
     }
-    void addPhone(string name, string number) {
+    void addPhone(const string &name, const string &number) {
         if (name_to_person.count(name) != 0 && name_to_person.at(name).numbers.count(number) == 0) {
             name_to_person.at(name).numbers.insert(number);
             cout << "DONE" << endl;
@@ -46,7 +46,7 @@ class NumberList {
             cout << "FAIL" << endl;
         }
     }
-    void replaceEmail(string name, string new_email) {
+    void replaceEmail(const string &name, const string &new_email) {
         if (name_to_person.count(name) != 0) {
             name_to_person.at(name).email = new_email;
             cout << "DONE" << endl;
@@ -54,7 +54,7 @@ class NumberList {
             cout << "FAIL" << endl;
         }
     }
-    void replacePhone(string name, string new_phone, string old_phone) {
+    void replacePhone(const string &name, const string &new_phone, const string &old_phone) {
         if (name_to_person.count(name) != 0 && name_to_person.at(name).numbers.count(old_phone) != 0
             && name_to_person.at(name).numbers.count(new_phone) == 0) {
             name_to_person.at(name).numbers.erase(old_phone);
@@ -64,7 +64,7 @@ class NumberList {
             cout << "FAIL" << endl;
         }
     }
-    void deletePerson(string name) {
+    void deletePerson(const string& name) {
         if (name_to_person.count(name) != 0) {
             name_to_person.erase(name);
             cout << "DONE" << endl;
@@ -72,7 +72,7 @@ class NumberList {
             cout << "FAIL" << endl;
         }
     }
-    void deletePhone(string name, string phone) {
+    void deletePhone(const string& name, const string& phone) {
         if (name_to_person.count(name) != 0 && name_to_person.at(name).numbers.count(phone) != 0) {
             name_to_person.at(name).numbers.erase(phone);
             cout << "DONE" << endl;
@@ -80,17 +80,19 @@ class NumberList {
             cout << "FAIL" << endl;
         }
     }
-    void printPerson(string name) {
-        if (name_to_person.count(name) != 0) {
+    void printPerson(const string& name) {
+        if (name_to_person.count(name) == 0) {
+            cout << "FAIL" << endl;
+        } else {
             cout << "Name: " << name << ';' << endl;
             if (!name_to_person.at(name).numbers.empty()) {
                 cout << "Phones: ";
                 int cnt = 1;
                 for (const auto &item : name_to_person.at(name).numbers) {
-                    if (cnt == name_to_person.at(name).numbers.size() || name_to_person.at(name).numbers.size() == 1) {
-                        cout << item;
-                    } else {
-                        cout << item << ", ";
+                    cout << item;
+                    if (!(cnt == name_to_person.at(name).numbers.size() ||
+                          name_to_person.at(name).numbers.size() == 1)) {
+                        cout << ", ";
                     }
                     ++cnt;
                 }
@@ -99,13 +101,11 @@ class NumberList {
             if (!name_to_person.at(name).email.empty()) {
                 cout << "Email: " << name_to_person.at(name).email << ';' << endl;
             }
-        } else {
-            cout << "FAIL" << endl;
         }
     }
 };
 
-bool containsDog(string line) {
+bool containsDog(const string &line) {
     return line.find_first_of('@') != line.npos;
 }
 
