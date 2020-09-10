@@ -1,6 +1,5 @@
 cmake-build-debug/
 cmake-build-release/
-chernyy/
 .idea/
 *.xml
 *.exe
