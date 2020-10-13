@@ -1,12 +1,12 @@
 //
-// Created by vladimir on 08.10.2020.
+// Created by Vladimir on 13.10.2020.
 //
 
 #include <iostream>
 #include <string>
 #include <vector>
 #include <set>
-#include <stack>
+#include <deque>
 
 using namespace std;
 
@@ -14,19 +14,14 @@ struct Graph {
     explicit Graph(int size) {
         vertices.resize(size);
         color.resize(size, "white");
-        parent.resize(size, -1);
     }
 
     mutable bool has_cycle = false;
-    mutable int cycle_start;
     mutable vector<string> color;
-    mutable vector<int> parent;
     vector<set<int>> vertices;
 };
 
-void DFS(const Graph &graph);
-
-void print_cycle(const Graph &graph, int child);
+void TopSort(const Graph &graph);
 
 int main() {
     int n, m;
@@ -37,51 +32,43 @@ int main() {
         cin >> from >> to;
         graph.vertices[from - 1].insert(to);
     }
-    DFS(graph);
-    if (graph.has_cycle) {
-        cout << "YES" << endl;
-        cout << graph.cycle_start << ' ';
-        print_cycle(graph, graph.parent[graph.cycle_start - 1]);
-    } else {
-        cout << "NO" << endl;
-    }
+    TopSort(graph);
     return 0;
 }
 
-void DFS_Visit(const Graph &graph, const int &root) {
+void DFS_Visit(const Graph &graph, const int &root, deque<int> &answer) {
     graph.color[root - 1] = "gray";
     for (const auto &u : graph.vertices[root - 1]) {
         if (graph.has_cycle) {
             break;
         }
         if (graph.color[u - 1] == "white") {
-            graph.parent[u - 1] = root;
-            DFS_Visit(graph, u);
+            DFS_Visit(graph, u, answer);
         } else if (graph.color[u - 1] == "gray") {
             graph.has_cycle = true;
-            graph.cycle_start = u;
-            graph.parent[u - 1] = root;
         }
     }
     if (graph.has_cycle) {
         return;
     } else {
         graph.color[root - 1] = "black";
+        answer.push_front(root);
     }
 }
 
-void DFS(const Graph &graph) {
+void TopSort(const Graph &graph) {
+    deque<int> answer;
     for (size_t i = 0; i < graph.vertices.size() && !graph.has_cycle; ++i) {
         if (graph.color[i] == "white") {
-            DFS_Visit(graph, i + 1);
+            DFS_Visit(graph, i + 1, answer);
         }
     }
-}
-
-void print_cycle(const Graph &graph, int child) {
-    if (child == graph.cycle_start) {
-        return;
+    if (graph.has_cycle) {
+        cout << -1 << endl;
+    } else {
+        for (const auto &elem: answer) {
+            cout << elem << ' ';
+        }
+        cout << endl;
     }
-    print_cycle(graph, graph.parent[child - 1]);
-    cout << child << ' ';
 }

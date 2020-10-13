@@ -3,60 +3,76 @@
 //
 
 #include <iostream>
-#include <set>
 #include <vector>
 #include <queue>
 #include <limits>
 
 using namespace std;
 
-void BFS(const vector<set<int>> &graph, int from, int to);
+struct Graph {
+    explicit Graph(int size) {
+        vertices.resize(size);
+        dist.resize(size, numeric_limits<int>::max());
+        path.resize(size);
+    }
+    mutable vector<int> dist;
+    mutable vector<int> path;
+    vector<vector<int>> vertices;
+};
+
+void BFS(const Graph &graph, int from);
+
+void print_path(const Graph &graph, int from, int to);
 
 int main() {
     int n, m;
     cin >> n >> m;
     int from, to;
     cin >> from >> to;
-    vector<set<int>> graph(n);
+    Graph graph(n);
     for (int i = 0; i < m; ++i) {
         int f, t;
         cin >> f >> t;
-        graph[f - 1].insert(t);
-        graph[t - 1].insert(f);
+        graph.vertices[f - 1].push_back(t);
+        graph.vertices[t - 1].push_back(f);
     }
-    BFS(graph, from, to);
+    BFS(graph, from);
+    print_path(graph, from, to);
     return 0;
 }
 
-void BFS(const vector<set<int>> &graph, int from, int to) {
+void BFS(const Graph &graph, int from) {
     queue<int> level = {};
-    vector<int> dist(graph.size(), numeric_limits<int>::max());
-    vector<int> path(graph.size());
     level.push(from);
-    dist[from - 1] = 0;
+    graph.dist[from - 1] = 0;
     while (!level.empty()) {
         int v = level.front();
         level.pop();
-        for (const auto &u: graph[v - 1]) {
-            if (dist[u - 1] > dist[v - 1] + 1) {
-                dist[u - 1] = dist[v - 1] + 1;
-                path[u - 1] = v;
+        for (const auto &u: graph.vertices[v - 1]) {
+            if (graph.dist[u - 1] > graph.dist[v - 1] + 1) {
+                graph.dist[u - 1] = graph.dist[v - 1] + 1;
+                graph.path[u - 1] = v;
                 level.push(u);
             }
         }
     }
-    if (dist[to - 1] == numeric_limits<int>::max()) {
+}
+
+void print_path(const Graph &graph, int from, int to) {
+
+    if (graph.dist[to - 1] == numeric_limits<int>::max()) {
         cout << -1 << endl;
         return;
     }
-    vector<int> result(dist[to - 1] + 1);
+    vector<int> result(graph.dist[to - 1] + 1);
     int temp = to;
-    for (auto it = result.rbegin(); it < result.rend(); it = next(it)) {
+    for (auto it = result.rbegin(); it < result.rend();
+         it = next(it)) {
         *it = temp;
-        temp = path[temp - 1];
+        temp = graph.path[temp - 1];
     }
-    cout << dist[to - 1] << endl;
-    for (const auto &item : result) {
+    cout << graph.dist[to - 1] << endl;
+    for (const auto &item: result) {
         cout << item << ' ';
     }
     cout << endl;
