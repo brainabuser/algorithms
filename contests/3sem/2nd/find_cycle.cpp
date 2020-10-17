@@ -6,7 +6,6 @@
 #include <string>
 #include <vector>
 #include <set>
-#include <stack>
 
 using namespace std;
 

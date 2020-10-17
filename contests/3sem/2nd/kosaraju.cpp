@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <set>
 #include <deque>
 
 using namespace std;
@@ -13,71 +12,101 @@ using namespace std;
 struct Graph {
     explicit Graph(int size) {
         vertices.resize(size);
-        component_id.resize(size);
-        color.resize(size, "white");
     }
-
-    mutable vector<string> color;
-    mutable vector<int> component_id;
-    vector<set<int>> vertices;
+    vector<vector<int>> vertices;
 };
 
-deque<int> TopSort(const Graph &graph);
+class AbstractVisitor {
+  public:
+    virtual void process_vertex(const int &vertex) = 0;
+    virtual void start() = 0;
+    vector<int> order;
+};
 
-void DFS_Visit(const Graph &graph, const int &root, deque<int> &answer);
+class TopSortVisitor : public AbstractVisitor {
+  public:
+    explicit TopSortVisitor(int size) {
+        order.resize(size);
+    }
+    void start() {}
+    void process_vertex(const int &vertex) override {
+        result.push_front(vertex);
+    }
+    deque<int> result;
+};
+
+class CondensationVisitor : public AbstractVisitor {
+  public:
+    explicit CondensationVisitor(int size) : component_id(0) {
+        result.resize(size);
+        order.resize(size);
+    }
+    void start() {
+        ++component_id;
+    }
+    void process_vertex(const int &vertex) override {
+        result[vertex - 1] = component_id;
+    }
+    int component_id;
+    vector<int> result;
+};
+
+void DFS(const Graph &graph, AbstractVisitor &vis);
+
+void read_graphs(Graph &graph, Graph &graph_t, const int &edge_num) {
+    for (int j = 0; j < edge_num; ++j) {
+        int from, to;
+        cin >> from >> to;
+        graph.vertices[from - 1].push_back(to);
+        graph_t.vertices[to - 1].push_back(from);
+    }
+}
+
+void print_answer(const CondensationVisitor &strong_components, const int &vertex_num) {
+    cout << strong_components.component_id << endl;
+    for (int i = 0; i < vertex_num; ++i) {
+        cout << strong_components.result[i] << ' ';
+    }
+    cout << endl;
+}
 
 int main() {
     int n, m;
     cin >> n >> m;
     Graph graph(n);
     Graph graph_t(n);
-    for (int j = 0; j < m; ++j) {
-        int from, to;
-        cin >> from >> to;
-        graph.vertices[from - 1].insert(to);
-        graph_t.vertices[to - 1].insert(from);
-    }
-    auto order = TopSort(graph);
-    vector<deque<int>> g_condensation;
-    for (const auto &elem : order) {
-        deque<int> connected_component;
-        if (graph_t.color[elem - 1] == "white") {
-            DFS_Visit(graph_t, elem, connected_component);
-            g_condensation.push_back(connected_component);
-        }
-    }
-    auto cond_len = g_condensation.size();
-    cout << cond_len << endl;
-    for (int id = 1; id <= cond_len; ++id) {
-        auto cc_len = g_condensation[id - 1].size();
-        for (int j = 0; j < cc_len; ++j) {
-            graph.component_id[g_condensation[id - 1][j] - 1] = id;
-        }
-    }
+    read_graphs(graph, graph_t, m);
+    TopSortVisitor sorted_graph(n);
     for (int i = 0; i < n; ++i) {
-        cout << graph.component_id[i] << ' ';
+        sorted_graph.order[i] = i + 1;
     }
-    cout << endl;
+    DFS(graph, sorted_graph);
+    CondensationVisitor strong_components(n);
+    for (int i = 0; i < n; ++i) {
+        strong_components.order[i] = sorted_graph.result[i];
+    }
+    DFS(graph_t, strong_components);
+    print_answer(strong_components, n);
     return 0;
 }
 
-void DFS_Visit(const Graph &graph, const int &root, deque<int> &answer) {
-    graph.color[root - 1] = "gray";
+void DFS_Visit(const Graph &graph, AbstractVisitor &vis, vector<string> &color, const int &root) {
+    color[root - 1] = "gray";
     for (const auto &u : graph.vertices[root - 1]) {
-        if (graph.color[u - 1] == "white") {
-            DFS_Visit(graph, u, answer);
+        if (color[u - 1] == "white") {
+            DFS_Visit(graph, vis, color, u);
         }
     }
-    graph.color[root - 1] = "black";
-    answer.push_front(root);
+    color[root - 1] = "black";
+    vis.process_vertex(root);
 }
 
-deque<int> TopSort(const Graph &graph) {
-    deque<int> answer;
-    for (size_t i = 1; i <= graph.vertices.size(); ++i) {
-        if (graph.color[i - 1] == "white") {
-            DFS_Visit(graph, i, answer);
+void DFS(const Graph &graph, AbstractVisitor &vis) {
+    vector<string> color(graph.vertices.size(), "white");
+    for (const auto &i : vis.order) {
+        if (color[i - 1] == "white") {
+            vis.start();
+            DFS_Visit(graph, vis, color, i);
         }
     }
-    return answer;
 }

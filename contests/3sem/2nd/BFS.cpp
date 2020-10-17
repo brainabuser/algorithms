@@ -59,7 +59,6 @@ void BFS(const Graph &graph, int from) {
 }
 
 void print_path(const Graph &graph, int from, int to) {
-
     if (graph.dist[to - 1] == numeric_limits<int>::max()) {
         cout << -1 << endl;
         return;
